@@ -56,18 +56,8 @@ htmlcov
 *.swp
 *.swo
 
-# npm
-node_modules/
-
-# Compass
-.sass-cache
-
 # virtual environments
 .env
 
 # User-uploaded media
 drklauns/media/
-
-# Hitch directory
-tests/.hitch
-

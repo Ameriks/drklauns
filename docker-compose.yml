@@ -9,5 +9,5 @@ services:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    image: citd.pd.lv/project_drklauns
+    image: ameriks/project_drklauns
     env_file: .env

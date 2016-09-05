@@ -9,7 +9,7 @@ env.use_ssh_config = True
 def rebuild_docker():
     local("docker-compose build django")
     local("docker-compose -f dev.yml build django")
-    local("docker push citd.pd.lv/project_drklauns:latest")
+    local("docker push ameriks/project_drklauns:latest")
 
 
 class Deploy(Task):
@@ -46,7 +46,7 @@ class Deploy(Task):
             self.need_service_restart = True
 
     def pull_docker(self):
-        pull_result = run("docker pull citd.pd.lv/project_drklauns:latest")
+        pull_result = run("docker pull ameriks/project_drklauns:latest")
         if 'Image is up to date' not in pull_result:
             self.need_full_restart = True
 
@@ -70,5 +70,3 @@ class Deploy(Task):
         elif self.need_full_restart:
             self.restart_docker_compose()
 instance = Deploy()
-
-
