@@ -8,6 +8,6 @@ services:
     image: ameriks/project_drklauns
     env_file: .env
     ports:
-      - "172.17.42.1:10012:8000"
+      - "172.17.42.1:10012:5000"
     volumes:
         - .:/app
