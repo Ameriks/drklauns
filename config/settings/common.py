@@ -33,6 +33,12 @@ DEBUG = env.bool('DJANGO_DEBUG', False)
 
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND', default='django.core.mail.backends.smtp.EmailBackend')
 
+MAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_PASSWORD', default='')
+EMAIL_HOST_USER = env('DJANGO_EMAIL_USERNAME', default='')
+EMAIL_PORT = 587
+
 ADMINS = (
     ("""Agris Ameriks""", 'd@pd.lv'),
 )
