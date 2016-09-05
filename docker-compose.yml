@@ -1,9 +1,5 @@
 version: '2'
 
-volumes:
-  postgres_data: {}
-  postgres_backup: {}
-
 services:
   django:
     build:
@@ -11,3 +7,7 @@ services:
       dockerfile: ./compose/django/Dockerfile
     image: ameriks/project_drklauns
     env_file: .env
+    ports:
+      - "172.17.42.1:10012:8000"
+    volumes:
+        - .:/app
