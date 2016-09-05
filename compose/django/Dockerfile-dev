@@ -1,0 +1,6 @@
+FROM citd.pd.lv/project_drklauns:latest
+
+COPY ./requirements /tmp/requirements
+RUN pip3 install -r /tmp/requirements/local.txt
+
+ENTRYPOINT []
