@@ -28,7 +28,7 @@ class Deploy(Task):
         self.need_static_regenerate = False
 
     def restart_services(self):
-        run("docker exec %s s6-svc -h /var/run/s6/services/gunicorn" % self.docker_id)
+        run("docker exec %s kill -HUP 1" % self.docker_id)
 
     def migrate(self):
         run("docker exec %s /app/manage.py migrate" % self.docker_id)

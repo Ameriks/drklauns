@@ -10,7 +10,7 @@ class User(AbstractUser):
     contract_rate = models.DecimalField(max_digits=6, decimal_places=2, default=0)
 
     address = models.CharField(_("Address"), blank=True, max_length=255)
-    bank_account = models.CharField(_("Address"), blank=True, max_length=25)
+    bank_account = models.CharField(_("Bank Account"), blank=True, max_length=25)
 
     @property
     def full_name(self):
