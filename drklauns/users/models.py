@@ -12,6 +12,8 @@ class User(AbstractUser):
     address = models.CharField(_("Address"), blank=True, max_length=255)
     bank_account = models.CharField(_("Bank Account"), blank=True, max_length=25)
 
+    phone_number = models.CharField(_("Phone Number"), blank=True, max_length=25, default="+371")
+
     @property
     def full_name(self):
         return "%s %s" % (self.first_name, self.last_name)
