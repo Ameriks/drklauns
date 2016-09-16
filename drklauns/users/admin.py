@@ -51,7 +51,7 @@ class MyUserAdmin(AuthUserAdmin):
     list_filter = ('is_superuser', 'is_active', 'groups')
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'ssn')}),
+        (_('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'ssn', 'address', 'bank_account')}),
         (_('Contract'), {'fields': ('contract_no', 'contract_rate')}),
         (_('Permissions'), {'fields': ('is_active', 'groups')}),
         (_('Important dates'), {'fields': ('last_login', 'date_joined')}),
