@@ -12,6 +12,7 @@ from django.utils.translation import ugettext_lazy as _
 from drklauns.timetable.export import monthly_excel
 from drklauns.timetable.models import Work, Summary, Analytics
 from drklauns.timetable.tasks import recalculate_summary
+from drklauns.timetable.widgets import AdminSplitDateTime
 
 
 def get_latest_edit_dt():
@@ -28,6 +29,10 @@ class WorkAdminForm(forms.ModelForm):
     class Meta:
         model = Work
         fields = ('department', 'start', 'end', 'number_of_contacts', 'number_of_procedures', 'comments')
+        widgets = {
+            "start": AdminSplitDateTime,
+            "end": AdminSplitDateTime,
+        }
 
     class Media:
         js = ("js/project.js", )
@@ -35,15 +40,16 @@ class WorkAdminForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         self.latest_data_add = get_latest_edit_dt()
         super().__init__(*args, **kwargs)
+        print(self.fields['end'].widget)
 
     def clean_start(self):
         start = self.cleaned_data.get('start')
 
         if start < self.latest_data_add:
             if not (self.latest_data_add.year == 2016 and self.latest_data_add.month in (9, 10) and start.year == 2016):
-                raise forms.ValidationError("Cannot add so far in past.")
+                raise forms.ValidationError(_("Cannot add so far in past."))
         elif start > timezone.now():
-            raise forms.ValidationError("Cannot add hours in future.")
+            raise forms.ValidationError(_("Cannot add hours in future."))
 
         return start
 
@@ -55,13 +61,13 @@ class WorkAdminForm(forms.ModelForm):
         diff = (end - start).total_seconds() / 3600
 
         if end < start:
-            raise forms.ValidationError("End cannot be before Start datetime")
+            raise forms.ValidationError(_("End cannot be before Start datetime"))
         elif end > timezone.now():
-            raise forms.ValidationError("Cannot add hours in future.")
+            raise forms.ValidationError(_("Cannot add hours in future."))
         elif diff > 8.0:
-            raise forms.ValidationError("One work can be max 8 hours long.")
+            raise forms.ValidationError(_("One work can be max 8 hours long."))
         elif diff < 1.0:
-            raise forms.ValidationError("One work can be min 1 hour long.")
+            raise forms.ValidationError(_("One work can be min 1 hour long."))
 
         return end
 
