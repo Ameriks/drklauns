@@ -15,7 +15,7 @@ class AdminSplitDateTime(forms.SplitDateTimeWidget):
         choices = []
         for _ in range(0,1440,30):
             dt2 = dt + datetime.timedelta(minutes=_)
-            choices.append((str(dt2.time())[0:5], str(dt2.time())[0:5]))
+            choices.append((dt2.time(), str(dt2.time())[0:5]))
 
         widgets = [AdminDateWidget, forms.Select(choices=choices)]
         # Note that we're calling MultiWidget, not SplitDateTimeWidget, because

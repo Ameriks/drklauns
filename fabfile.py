@@ -19,6 +19,7 @@ class Deploy(Task):
     need_migrate = False
     need_service_restart = False
     need_full_restart = False
+    need_compile_translations = False
 
     def get_project_id(self):
         self.docker_id = run('docker ps | grep "citdnew_projectdrklauns_1" | cut -c1-12')
@@ -26,6 +27,10 @@ class Deploy(Task):
     def collect_static(self):
         run("docker exec %s /app/manage.py collectstatic --no-input" % self.docker_id)
         self.need_static_regenerate = False
+
+    def compile_translations(self):
+        run("docker exec %s /app/manage.py compilemessages" % self.docker_id)
+        self.need_compile_translations = False
 
     def restart_services(self):
         run("docker exec %s kill -HUP 1" % self.docker_id)
@@ -45,6 +50,9 @@ class Deploy(Task):
         if ".py" in git_output or ".html" in git_output:
             self.need_service_restart = True
 
+        if ".po" in git_output:
+            self.need_compile_translations = True
+
     def pull_docker(self):
         pull_result = run("docker pull ameriks/project_drklauns:latest")
         if 'Image is up to date' not in pull_result:
@@ -62,6 +70,9 @@ class Deploy(Task):
 
         if self.need_static_regenerate:
             self.collect_static()
+
+        if self.need_compile_translations:
+            self.compile_translations()
 
         self.pull_docker()
 
