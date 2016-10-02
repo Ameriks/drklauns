@@ -45,7 +45,7 @@ ADMINS = (
 MANAGERS = ADMINS
 
 DATABASES = {
-    'default': env.db('DATABASE_URL', default='postgres://drklauns:drklauns@db/drklauns'),
+    'default': env.db('DATABASE_URL', default='postgres://drklauns:drklauns@host/drklauns'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 
