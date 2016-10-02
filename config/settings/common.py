@@ -5,6 +5,10 @@ APPS_DIR = ROOT_DIR.path('drklauns')
 
 env = environ.Env()
 
+LOCALE_PATHS = [
+    str(APPS_DIR.path('locale')),
+]
+
 INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',

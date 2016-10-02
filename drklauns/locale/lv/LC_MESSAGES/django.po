@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-10-02 01:34+0000\n"
+"PO-Revision-Date: 2016-10-02 04:44+0300\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : "
+"2);\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"X-Generator: Poedit 1.8.9\n"
+
+#: drklauns/core/apps.py:7
+msgid "Core"
+msgstr "Pamatinformācija"
+
+#: drklauns/core/mixins/model_mixins.py:10 drklauns/timetable/models.py:28
+msgid "Created"
+msgstr "Izveidots"
+
+#: drklauns/core/mixins/model_mixins.py:11 drklauns/timetable/models.py:29
+msgid "Modified"
+msgstr "Izmainīts"
+
+#: drklauns/core/models.py:8
+msgid "Name of Hospital"
+msgstr "Slimnīcas nosaukums"
+
+#: drklauns/core/models.py:16
+msgid "Name of Department"
+msgstr "Nodaļas nosaukums"
+
+#: drklauns/templates/base.html:54
+msgid "My Profile"
+msgstr "Mans profils"
+
+#: drklauns/templates/base.html:57
+msgid "Sign out"
+msgstr "Atslēgties"
+
+#: drklauns/templates/base.html:61
+msgid "Sign Up"
+msgstr "Reģistrēties"
+
+#: drklauns/templates/base.html:64
+msgid "Sign In"
+msgstr "Pieslēgties"
+
+#: drklauns/timetable/admin.py:136
+msgid "Get XLS"
+msgstr "Iegūt XLS"
+
+#: drklauns/timetable/apps.py:7
+msgid "Timetable"
+msgstr "Tabeles"
+
+#: drklauns/timetable/models.py:9 drklauns/timetable/models.py:32
+msgid "Employee"
+msgstr "Darbinieks"
+
+#: drklauns/timetable/models.py:10
+msgid "Start of Work"
+msgstr "Darba sākums"
+
+#: drklauns/timetable/models.py:11
+msgid "End of Work"
+msgstr "Darba beigas"
+
+#: drklauns/timetable/models.py:14
+msgid "Department"
+msgstr "Nodaļa"
+
+#: drklauns/timetable/models.py:16
+msgid "Number of Contacts"
+msgstr "Kontaktu skaits ar bērniem"
+
+#: drklauns/timetable/models.py:17
+msgid "Number of Procedures"
+msgstr "Procedūru skaits"
+
+#: drklauns/timetable/models.py:19
+msgid "Comments"
+msgstr "Komentāri"
+
+#: drklauns/timetable/models.py:23 drklauns/timetable/models.py:24
+msgid "Work object"
+msgstr "Darba maiņa"
+
+#: drklauns/timetable/models.py:31
+msgid "Summary Month"
+msgstr "Mēneša kopsavilkums"
+
+#: drklauns/timetable/models.py:42
+msgid "Summary"
+msgstr "Kopsavilkums"
+
+#: drklauns/timetable/models.py:53
+msgid "Year"
+msgstr "Gads"
+
+#: drklauns/timetable/models.py:54
+msgid "Month"
+msgstr "Mēnesis"
+
+#: drklauns/timetable/models.py:57
+msgid "Analytics"
+msgstr "Analītika"
+
+#: drklauns/users/admin.py:20
+msgid "Password"
+msgstr "Parole"
+
+#: drklauns/users/admin.py:54
+msgid "Personal info"
+msgstr "Personīgā informācija"
+
+#: drklauns/users/admin.py:55
+msgid "Contract"
+msgstr "Līgums"
+
+#: drklauns/users/admin.py:56
+msgid "Permissions"
+msgstr "Tiesības"
+
+#: drklauns/users/admin.py:57
+msgid "Important dates"
+msgstr "Svarīgi datumi"
+
+#: drklauns/users/apps.py:7
+msgid "Users"
+msgstr "Lietotāji"
+
+#: drklauns/users/models.py:7
+msgid "Name of User"
+msgstr "Lietotāja vārds"
+
+#: drklauns/users/models.py:8
+msgid "Social Security Number"
+msgstr "Personas kods"
+
+#: drklauns/users/models.py:9
+msgid "Contract NR"
+msgstr "Līguma numurs"
+
+#: drklauns/users/models.py:12
+msgid "Address"
+msgstr "Adrese"
+
+#: drklauns/users/models.py:13
+msgid "Bank Account"
+msgstr "Bankas konts"
+
+#: drklauns/users/models.py:15
+msgid "Phone Number"
+msgstr "Telefona numurs"

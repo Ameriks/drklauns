@@ -20,6 +20,8 @@ class Work(TimestampMixin, models.Model):
 
     class Meta:
         default_permissions = ('add', 'change', 'delete', 'view_all', 'change_all')
+        verbose_name = _("Work object")
+        verbose_name_plural = _("Work object")
 
 
 class Summary(models.Model):
