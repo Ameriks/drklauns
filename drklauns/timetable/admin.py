@@ -84,7 +84,8 @@ class WorkAdmin(admin.ModelAdmin):
     def save_model(self, request, obj, form, change):
         obj.created_by = request.user
         obj.modified_by = request.user
-        obj.employee = request.user
+        if not obj.id:
+            obj.employee = request.user
         obj.hours_worked = round((form.cleaned_data.get('end') - form.cleaned_data.get('start')).total_seconds() / 3600, 1)
         obj.save()
         recalculate_summary(work=obj)
