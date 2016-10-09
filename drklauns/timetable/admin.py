@@ -46,7 +46,7 @@ class WorkAdminForm(forms.ModelForm):
         start = self.cleaned_data.get('start')
 
         if start < self.latest_data_add:
-            if not (self.latest_data_add.year == 2016 and self.latest_data_add.month in (9, 10) and start.year == 2016):
+            if not (self.latest_data_add.year == 2016 and self.latest_data_add.month in (9, 10) and start.year in (2014, 2015, 2016)):
                 raise forms.ValidationError(_("Cannot add so far in past."))
         elif start > timezone.now():
             raise forms.ValidationError(_("Cannot add hours in future."))
