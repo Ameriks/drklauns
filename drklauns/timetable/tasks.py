@@ -18,6 +18,6 @@ def recalculate_summary(work_id: int=None, work: Work=None):
     summary.total_contacts = totals.get('number_of_contacts')
     summary.total_procedures = totals.get('number_of_procedures')
 
-    summary.income = summary.rate * summary.hours_worked
+    summary.income = float(summary.rate) * float(summary.hours_worked)
 
     summary.save()
