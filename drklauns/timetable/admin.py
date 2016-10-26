@@ -80,6 +80,8 @@ class WorkAdmin(admin.ModelAdmin):
     form = WorkAdminForm
     ordering = ('-start', )
     date_hierarchy = 'start'
+    save_on_top = True
+
 
     def save_model(self, request, obj, form, change):
         obj.created_by = request.user
@@ -114,6 +116,12 @@ class WorkAdmin(admin.ModelAdmin):
 
         return queryset
 
+    def response_add(self, request, obj, post_url_continue=None):
+        request.POST = request.POST.copy()
+        request.POST.update({'_addanother': True})
+        return super().response_add(request, obj, post_url_continue)
+
+
 
 @admin.register(Summary)
 class SummaryAdmin(admin.ModelAdmin):
@@ -122,6 +130,7 @@ class SummaryAdmin(admin.ModelAdmin):
     # fields = ('department', 'start', 'end', 'number_of_contacts', 'number_of_procedures', 'comments')
     readonly_fields = [field.name for field in Summary._meta.fields]
     date_hierarchy = 'date'
+    save_on_top = True
 
     def has_add_permission(self, request, obj=None):
         return False
@@ -136,6 +145,7 @@ class AnalyticsAdmin(admin.ModelAdmin):
     readonly_fields = [field.name for field in Analytics._meta.fields]
     change_form_template = "timetable/analytics.html"
     list_display = ("year", "month", "export_field", )
+    save_on_top = True
 
     def export_field(self, obj):
         return '<a href="%s">XLS</a>' % (reverse("admin:timetable_analytics_export", args=(obj.id, )))
@@ -179,6 +189,7 @@ class StoryAdmin(admin.ModelAdmin):
     list_filter = ('employee', )
     list_display = ('employee', 'year', 'month', 'story')
     fields = ('year', 'month', 'story')
+    save_on_top = True
 
     ordering = ('-year', '-month')
 
