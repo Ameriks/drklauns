@@ -7,8 +7,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-02 02:08+0000\n"
-"PO-Revision-Date: 2016-10-02 05:10+0300\n"
+"POT-Creation-Date: 2016-10-26 13:03+0000\n"
+"PO-Revision-Date: 2016-10-26 17:01+0300\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: lv\n"
@@ -23,11 +23,11 @@ msgstr ""
 msgid "Core"
 msgstr "Pamatinformācija"
 
-#: drklauns/core/mixins/model_mixins.py:10 drklauns/timetable/models.py:28
+#: drklauns/core/mixins/model_mixins.py:10 drklauns/timetable/models.py:64
 msgid "Created"
 msgstr "Izveidots"
 
-#: drklauns/core/mixins/model_mixins.py:11 drklauns/timetable/models.py:29
+#: drklauns/core/mixins/model_mixins.py:11 drklauns/timetable/models.py:65
 msgid "Modified"
 msgstr "Izmainīts"
 
@@ -75,7 +75,7 @@ msgstr "Viena darba maiņa nevar būt garāka par 8 stundām."
 msgid "One work can be min 1 hour long."
 msgstr "Viena darba maiņa nevar būt īsāka par 1 stundu."
 
-#: drklauns/timetable/admin.py:142
+#: drklauns/timetable/admin.py:143
 msgid "Get XLS"
 msgstr "Iegūt XLS"
 
@@ -83,55 +83,64 @@ msgstr "Iegūt XLS"
 msgid "Timetable"
 msgstr "Tabeles"
 
-#: drklauns/timetable/models.py:9 drklauns/timetable/models.py:32
+#: drklauns/timetable/models.py:32 drklauns/timetable/models.py:45
+#: drklauns/timetable/models.py:68
 msgid "Employee"
 msgstr "Darbinieks"
 
-#: drklauns/timetable/models.py:10
-msgid "Start of Work"
-msgstr "Darba sākums"
-
-#: drklauns/timetable/models.py:11
-msgid "End of Work"
-msgstr "Darba beigas"
-
-#: drklauns/timetable/models.py:14
-msgid "Department"
-msgstr "Nodaļa"
-
-#: drklauns/timetable/models.py:16
-msgid "Number of Contacts"
-msgstr "Kontaktu skaits ar bērniem"
-
-#: drklauns/timetable/models.py:17
-msgid "Number of Procedures"
-msgstr "Procedūru skaits"
-
-#: drklauns/timetable/models.py:19
-msgid "Comments"
-msgstr "Komentāri"
-
-#: drklauns/timetable/models.py:23 drklauns/timetable/models.py:24
-msgid "Work object"
-msgstr "Darba maiņa"
-
-#: drklauns/timetable/models.py:31
-msgid "Summary Month"
-msgstr "Mēneša kopsavilkums"
-
-#: drklauns/timetable/models.py:42
-msgid "Summary"
-msgstr "Kopsavilkums"
-
-#: drklauns/timetable/models.py:53
+#: drklauns/timetable/models.py:33 drklauns/timetable/models.py:89
 msgid "Year"
 msgstr "Gads"
 
-#: drklauns/timetable/models.py:54
+#: drklauns/timetable/models.py:34 drklauns/timetable/models.py:90
 msgid "Month"
 msgstr "Mēnesis"
 
-#: drklauns/timetable/models.py:57
+#: drklauns/timetable/models.py:36 drklauns/timetable/models.py:40
+msgid "Story"
+msgstr "Stāsts"
+
+#: drklauns/timetable/models.py:41
+msgid "Stories"
+msgstr "Stāsti"
+
+#: drklauns/timetable/models.py:46
+msgid "Start of Work"
+msgstr "Darba sākums"
+
+#: drklauns/timetable/models.py:47
+msgid "End of Work"
+msgstr "Darba beigas"
+
+#: drklauns/timetable/models.py:50
+msgid "Department"
+msgstr "Nodaļa"
+
+#: drklauns/timetable/models.py:52
+msgid "Number of Contacts"
+msgstr "Kontaktu skaits ar bērniem"
+
+#: drklauns/timetable/models.py:53
+msgid "Number of Procedures"
+msgstr "Procedūru skaits"
+
+#: drklauns/timetable/models.py:55
+msgid "Comments"
+msgstr "Komentāri"
+
+#: drklauns/timetable/models.py:59 drklauns/timetable/models.py:60
+msgid "Work object"
+msgstr "Darba maiņa"
+
+#: drklauns/timetable/models.py:67
+msgid "Summary Month"
+msgstr "Mēneša kopsavilkums"
+
+#: drklauns/timetable/models.py:78
+msgid "Summary"
+msgstr "Kopsavilkums"
+
+#: drklauns/timetable/models.py:93
 msgid "Analytics"
 msgstr "Analītika"
 

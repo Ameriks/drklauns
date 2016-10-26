@@ -10,7 +10,7 @@ from django.contrib.admin.utils import unquote
 from django.utils.translation import ugettext_lazy as _
 
 from drklauns.timetable.export import monthly_excel
-from drklauns.timetable.models import Work, Summary, Analytics
+from drklauns.timetable.models import Work, Summary, Analytics, Story
 from drklauns.timetable.tasks import recalculate_summary
 from drklauns.timetable.widgets import AdminSplitDateTime
 
@@ -172,3 +172,39 @@ class AnalyticsAdmin(admin.ModelAdmin):
         file_obj.close()
         return response
 
+
+
+@admin.register(Story)
+class StoryAdmin(admin.ModelAdmin):
+    list_filter = ('employee', )
+    list_display = ('employee', 'year', 'month', 'story')
+    fields = ('year', 'month', 'story')
+
+    ordering = ('-year', '-month')
+
+    def save_model(self, request, obj, form, change):
+        obj.created_by = request.user
+        obj.modified_by = request.user
+        if not obj.id:
+            obj.employee = request.user
+        obj.save()
+
+    def has_change_permission(self, request, obj=None):
+        if not obj or request.user.has_perm("timetable.change_all_work"):
+            return super().has_change_permission(request, obj)
+
+        if obj:
+            latest_edit = get_latest_edit_dt()
+            if obj.created < latest_edit:
+                return False
+        return super().has_change_permission(request, obj)
+
+    def has_delete_permission(self, request, obj=None):
+        return False
+
+    def get_queryset(self, request):
+        queryset = super().get_queryset(request)
+        if not request.user.has_perm("timetable.view_all_work"):
+            queryset = queryset.filter(created_by=request.user)
+
+        return queryset

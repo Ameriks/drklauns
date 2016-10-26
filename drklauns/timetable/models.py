@@ -1,8 +1,44 @@
 import datetime
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
+from django.utils import timezone
 
 from drklauns.core.mixins import TimestampMixin
+
+
+def this_year():
+    return timezone.now().year
+
+
+def this_month():
+    return timezone.now().month
+
+
+class Story(TimestampMixin, models.Model):
+    MONTH_PICK = (
+        (1, 'Janvāris'),
+        (2, 'Februāris'),
+        (3, 'Marts'),
+        (4, 'Aprīlis'),
+        (5, 'Maijs'),
+        (6, 'Jūnijs'),
+        (7, 'Jūlijs'),
+        (8, 'Augusts'),
+        (9, 'Septembris'),
+        (10, 'Oktobris'),
+        (11, 'Novembris'),
+        (12, 'Decembris'),
+    )
+    employee = models.ForeignKey("users.User", verbose_name=_("Employee"))
+    year = models.IntegerField(_('Year'), default=this_year)
+    month = models.SmallIntegerField(_('Month'), default=this_month, choices=MONTH_PICK)
+
+    story = models.TextField(_("Story"), blank=True)
+
+    class Meta:
+        default_permissions = ('add', 'change', 'delete', 'view_all', )
+        verbose_name = _("Story")
+        verbose_name_plural = _("Stories")
 
 
 class Work(TimestampMixin, models.Model):
