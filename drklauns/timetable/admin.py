@@ -22,6 +22,9 @@ def get_latest_edit_dt():
         latest_data_add = (latest_data_add - datetime.timedelta(days=1)).replace(day=1)
     return latest_data_add
 
+def get_earliest_edit_dt():
+    return timezone.now().replace(year=2016, month=9, day=1, hour=0, minute=0, second=0, microsecond=0)
+
 
 class WorkAdminForm(forms.ModelForm):
     latest_data_add = None
@@ -45,10 +48,10 @@ class WorkAdminForm(forms.ModelForm):
     def clean_start(self):
         start = self.cleaned_data.get('start')
 
-        if start < self.latest_data_add:
-            if not (self.latest_data_add.year == 2016 and self.latest_data_add.month in (9, 10) and start.year in (2014, 2015, 2016)):
-                raise forms.ValidationError(_("Cannot add so far in past."))
-        elif start > timezone.now():
+        # if start < self.latest_data_add:
+        # if not (self.latest_data_add.year == 2016 and self.latest_data_add.month in (9, 10) and start.year in (2014, 2015, 2016)):
+        #     raise forms.ValidationError(_("Cannot add so far in past"))
+        if start > timezone.now():
             raise forms.ValidationError(_("Cannot add hours in future."))
 
         return start
@@ -96,16 +99,14 @@ class WorkAdmin(admin.ModelAdmin):
         if not obj or request.user.has_perm("timetable.change_all_work"):
             return super().has_change_permission(request, obj)
 
-        if obj:
-            latest_edit = get_latest_edit_dt()
-            if obj.end < latest_edit:
-                return False
+        # if obj:
+        #     if get_latest_edit_dt() > obj.end >= get_earliest_edit_dt():
+        #         return False
         return super().has_change_permission(request, obj)
 
     def has_delete_permission(self, request, obj=None):
         if obj:
-            latest_edit = get_latest_edit_dt()
-            if obj.end < latest_edit:
+            if get_latest_edit_dt() > obj.end >= get_earliest_edit_dt():
                 return False
         return super().has_change_permission(request, obj)
 
