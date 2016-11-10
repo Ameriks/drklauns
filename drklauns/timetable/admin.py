@@ -105,9 +105,9 @@ class WorkAdmin(admin.ModelAdmin):
         return super().has_change_permission(request, obj)
 
     def has_delete_permission(self, request, obj=None):
-        if obj:
-            if get_latest_edit_dt() > obj.end >= get_earliest_edit_dt():
-                return False
+        # if obj:
+        #     if get_latest_edit_dt() > obj.end >= get_earliest_edit_dt():
+        #         return False
         return super().has_change_permission(request, obj)
 
     def get_queryset(self, request):
