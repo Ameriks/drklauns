@@ -1,4 +1,4 @@
-FROM alpine:edge
+FROM alpine:latest
 
 COPY ./compose/django/gunicorn.sh /
 COPY ./requirements /tmp/requirements
