@@ -7,6 +7,7 @@ services:
       dockerfile: ./compose/django/Dockerfile
     image: ameriks/project_drklauns
     env_file: .env
+    command: /gunicorn.sh
     ports:
       - "172.17.42.1:10012:5000"
     volumes:
