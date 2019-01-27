@@ -1,4 +1,4 @@
-FROM ameriks/project_drklauns:latest
+FROM registry.creativeit.biz/drklauns/drklauns/django:latest
 
 COPY ./requirements /tmp/requirements
 RUN pip3 install -r /tmp/requirements/local.txt

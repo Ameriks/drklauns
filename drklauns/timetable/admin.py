@@ -7,6 +7,7 @@ from django.http import HttpResponse
 from django.urls import reverse
 from django.utils import timezone
 from django.contrib.admin.utils import unquote
+from django.utils.safestring import mark_safe
 from django.utils.translation import ugettext_lazy as _
 
 from drklauns.timetable.export import monthly_excel
@@ -149,7 +150,7 @@ class AnalyticsAdmin(admin.ModelAdmin):
     save_on_top = True
 
     def export_field(self, obj):
-        return '<a href="%s">XLS</a>' % (reverse("admin:timetable_analytics_export", args=(obj.id, )))
+        return mark_safe('<a href="%s">XLS</a>' % (reverse("admin:timetable_analytics_export", args=(obj.id, ))))
     export_field.allow_tags = True
     export_field.short_description = _("Get XLS")
 

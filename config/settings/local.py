@@ -11,7 +11,7 @@ SECRET_KEY = env('DJANGO_SECRET_KEY', default='vx%*xw9(^@v1)x2r0ocu2u=hprqyx^2bu
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND',
                     default='django.core.mail.backends.console.EmailBackend')
 
-MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+MIDDLEWARE += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
 INSTALLED_APPS += ('debug_toolbar', )
 
 INTERNAL_IPS = ['127.0.0.1', '172.17.0.1', ]

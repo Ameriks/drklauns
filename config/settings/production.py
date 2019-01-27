@@ -3,7 +3,7 @@ from .common import *  # noqa
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 WHITENOISE_MIDDLEWARE = ('whitenoise.middleware.WhiteNoiseMiddleware', )
-MIDDLEWARE_CLASSES = WHITENOISE_MIDDLEWARE + MIDDLEWARE_CLASSES
+MIDDLEWARE = WHITENOISE_MIDDLEWARE + MIDDLEWARE
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ALLOWED_HOSTS = ['mans.drklauns.lv']

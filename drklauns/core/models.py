@@ -12,7 +12,7 @@ class Hospital(TimestampMixin, models.Model):
 
 
 class Department(TimestampMixin, models.Model):
-    hospital = models.ForeignKey(Hospital)
+    hospital = models.ForeignKey(Hospital, on_delete=models.CASCADE)
     name = models.CharField(_('Name of Department'), blank=True, max_length=255)
 
     def __str__(self):

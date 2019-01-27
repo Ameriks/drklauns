@@ -17,7 +17,7 @@ admin.site.disable_action('delete_selected')
 
 urlpatterns = [
     url(r'^$', RedirectView.as_view(url="/kadmin/"), name='home'),
-    url(r'^kadmin/', include(admin.site.urls)),
+    url(r'^kadmin/', admin.site.urls),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
@@ -27,4 +27,8 @@ if settings.DEBUG:
         url(r'^403/$', default_views.permission_denied, kwargs={'exception': Exception('Permission Denied')}),
         url(r'^404/$', default_views.page_not_found, kwargs={'exception': Exception('Page not Found')}),
         url(r'^500/$', default_views.server_error),
+    ]
+    import debug_toolbar
+    urlpatterns += [
+        url(r'^__debug__/', include(debug_toolbar.urls)),
     ]

@@ -7,9 +7,9 @@ env.use_ssh_config = True
 
 @task
 def rebuild_docker():
-    local("docker-compose build projectdrklauns")
+    local("docker-compose build django")
     local("docker-compose -f dev.yml build django")
-    local("docker push ameriks/project_drklauns:latest")
+    local("docker push registry.creativeit.biz/drklauns/drklauns/django:latest")
 
 
 class Deploy(Task):

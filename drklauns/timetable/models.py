@@ -29,7 +29,7 @@ class Story(TimestampMixin, models.Model):
         (11, 'Novembris'),
         (12, 'Decembris'),
     )
-    employee = models.ForeignKey("users.User", verbose_name=_("Employee"))
+    employee = models.ForeignKey("users.User", verbose_name=_("Employee"), on_delete=models.PROTECT)
     year = models.IntegerField(_('Year'), default=this_year)
     month = models.SmallIntegerField(_('Month'), default=this_month, choices=MONTH_PICK)
 
@@ -42,12 +42,12 @@ class Story(TimestampMixin, models.Model):
 
 
 class Work(TimestampMixin, models.Model):
-    employee = models.ForeignKey("users.User", verbose_name=_("Employee"))
+    employee = models.ForeignKey("users.User", verbose_name=_("Employee"), on_delete=models.PROTECT)
     start = models.DateTimeField(_('Start of Work'))
     end = models.DateTimeField(_('End of Work'))
     hours_worked = models.FloatField(default=0)
 
-    department = models.ForeignKey("core.Department", verbose_name=_("Department"))
+    department = models.ForeignKey("core.Department", verbose_name=_("Department"), on_delete=models.PROTECT)
 
     number_of_contacts = models.PositiveIntegerField(_("Number of Contacts"))
     number_of_procedures = models.PositiveIntegerField(_("Number of Procedures"))
@@ -65,7 +65,7 @@ class Summary(models.Model):
     modified = models.DateTimeField(_('Modified'), auto_now=True)
 
     date = models.DateField(_("Summary Month"))
-    employee = models.ForeignKey("users.User", verbose_name=_("Employee"))
+    employee = models.ForeignKey("users.User", verbose_name=_("Employee"), on_delete=models.PROTECT)
 
     hours_worked = models.FloatField(default=0)
     total_contacts = models.PositiveIntegerField(default=0)

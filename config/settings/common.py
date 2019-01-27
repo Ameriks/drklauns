@@ -23,7 +23,7 @@ INSTALLED_APPS = (
     'drklauns.timetable.apps.TimetableConfig',
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',

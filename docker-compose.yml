@@ -5,7 +5,7 @@ services:
     build:
       context: .
       dockerfile: ./compose/django/Dockerfile
-    image: ameriks/project_drklauns
+    image: registry.creativeit.biz/drklauns/drklauns/django:latest
     env_file: .env
     command: /gunicorn.sh
     ports:
